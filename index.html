@@ -12,31 +12,43 @@
             padding: 100px;
         }
         #image-canvas {
-            display: block;
+            position: absolute;
             box-shadow: 0 0 10px 10px rgba(0,0,0,0.1);
             width: 200px;
             height: 200px;
+            left: -1000000px;
         }
 
-        #image {
-            display: block;
-            width: 700px;
-            height: 700px;
+        .image {
+            width: 10cm;
+            height: 10cm;
         }
 
         #result-canvas {
-            width: 700px;
-            height: 700px;
+            width: 20cm;
+            height: 20cm;
+        }
+
+        #eraser {
+            position: absolute;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            border-radius: 50%;
+            background: #fff;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
 <body>
+    <input type="checkbox" id="checkbox">放大？<br>
     <canvas id="result-canvas"></canvas>
+    <img src="./assets/images/she2.jpeg" class="image" id="image">
+    <!-- <img src="./assets/images/she3.jpeg" class="image" id="image"> -->
     
-    <img src="./assets/images/she3.jpeg" id="image">
-    <canvas id="image-canvas"></canvas>
     <!-- <canvas id="text-canvas"></canvas> -->
+    <canvas id="image-canvas"></canvas>
 
+    <div id="eraser"></div>
 
 </body>
 </html>

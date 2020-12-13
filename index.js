@@ -10,9 +10,11 @@
 // }
 const WIDTH = 200;
 const HEIGHT = 200;
+const BACKGROUND_COLOR = '#fff'
+const TEXT_COLOR = '#666'
 const mixColorCountPrev = 2 // 去除边界极端颜色数量
 const mixColorCountNext = 2 // 去除边界极端颜色数量
-const colorCount = 6; // 不可以大于256 不可以小于2
+const colorCount = 8; // 不可以大于256 不可以小于2
 const noWhiteColorCount = colorCount - mixColorCountPrev - mixColorCountNext + 1
 const colorStep = parseInt(256 / (colorCount - 1));
 const colors = genColors(colorCount)
@@ -26,6 +28,8 @@ window.onload = function () {
   const imageCanvasCtx = initImageData()
   getColorIndexs(imageCanvasCtx)
   print()
+
+  listenerCheckbox()
 }
 
 function initImageData() {
@@ -53,17 +57,17 @@ function getColorIndexs (imageCanvasCtx) {
   }
 }
 
-function print() {
+function print(textColor = '#000') {
   const resultCanvas = document.getElementById('result-canvas');
-  const size = 14
+  const size = 30
   resultCanvas.width = WIDTH * size
   resultCanvas.height = HEIGHT * size
   const resultCanvasCtx = resultCanvas.getContext('2d');
 
   // 填充背景色
-  resultCanvasCtx.fillStyle = '#fff';
+  resultCanvasCtx.fillStyle = BACKGROUND_COLOR;
   resultCanvasCtx.fillRect(0, 0, resultCanvas.width, resultCanvas.height);
-  resultCanvasCtx.fillStyle = '#000';
+  resultCanvasCtx.fillStyle = textColor;
 
   colorIndexs.forEach((colorIndex, index) => {
     const y = parseInt(index / WIDTH) * size;
@@ -92,28 +96,20 @@ function printItemByCustomTextColor(colorIndex, x, y, ctx, size) {
 
 function printItemByCustomFontSize(colorIndex, x, y, ctx, size) {
   let fontSize = size - colorIndex * 3;
-  if (fontSize < 8) return;
+  
+  if (fontSize < 22) return;
 
-  // if (fontSize > size - 3) {
-  //   isBig = true
-  //   fontSize = size;
-  // } else if (fontSize > size - 4) {
-  //   fontSize = size;
-  // }
-  if (fontSize > 9) {
+  if (fontSize > 25) {
     fontSize = size;
+  } else {
+    fontSize = 18;
   }
 
-  //   if (!isBig) {
-  //     ctx.font = fontSize + 'px Microsoft YaHei';
-  // } else {
-  //     ctx.font = 'bold ' + fontSize + 'px Microsoft YaHei';
-  //   }
 
   if (fontSizes.indexOf(fontSize) === -1) {
     fontSizes.push(fontSize)
   }
-  ctx.font = fontSize + 'px Microsoft YaHei';
+  ctx.font = fontSize + 'px STXingkaiSC';
   ctx.fillText('妮', x, y);
 }
 
@@ -152,4 +148,21 @@ function genColors(colorCount) {
   }
 
   return colors;
+}
+
+
+function listenerCheckbox() {
+  const checkbox = document.getElementById('checkbox');
+  checkbox.addEventListener('change', ev => {
+    const checked = ev.target.checked;
+    console.log(checked)
+    const resultCanvas = document.getElementById('result-canvas');
+    if (checked) {
+      resultCanvas.style.width = '100cm'
+      resultCanvas.style.height = '100cm'
+    } else {
+      resultCanvas.style.width = '10cm'
+      resultCanvas.style.height = '10cm'
+    }
+  })
 }
