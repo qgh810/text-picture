@@ -60,8 +60,8 @@ function getColorIndexs (imageCanvasCtx) {
 function print(textColor = '#000') {
   const resultCanvas = document.getElementById('result-canvas');
   const size = 30
-  resultCanvas.width = WIDTH * size
-  resultCanvas.height = HEIGHT * size
+  resultCanvas.width = WIDTH * size;
+  resultCanvas.height = HEIGHT * size;
   const resultCanvasCtx = resultCanvas.getContext('2d');
 
   // 填充背景色
@@ -109,7 +109,7 @@ function printItemByCustomFontSize(colorIndex, x, y, ctx, size) {
   if (fontSizes.indexOf(fontSize) === -1) {
     fontSizes.push(fontSize)
   }
-  ctx.font = fontSize + 'px STXingkaiSC';
+  ctx.font = fontSize + 'px STXingkaiSC-Light';
   ctx.fillText('妮', x, y);
 }
 
@@ -158,8 +158,8 @@ function listenerCheckbox() {
     console.log(checked)
     const resultCanvas = document.getElementById('result-canvas');
     if (checked) {
-      resultCanvas.style.width = '100cm'
-      resultCanvas.style.height = '100cm'
+      resultCanvas.style.width = '1000mm'
+      resultCanvas.style.height = '1000mm'
     } else {
       resultCanvas.style.width = '10cm'
       resultCanvas.style.height = '10cm'
