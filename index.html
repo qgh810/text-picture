@@ -11,20 +11,32 @@
         body {
             padding: 100px;
         }
-        #canvas {
+        #image-canvas {
+            display: block;
             box-shadow: 0 0 10px 10px rgba(0,0,0,0.1);
+            width: 200px;
+            height: 200px;
         }
 
         #image {
+            display: block;
             width: 200px;
             height: 200px;
+        }
+
+        #result-canvas {
+            width: 2000px;
+            height: 2000px;
         }
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="result-canvas"></canvas>
+    <canvas id="image-canvas"></canvas>
+    
+    <img src="./assets/images/she3.jpeg" id="image">
     <!-- <canvas id="text-canvas"></canvas> -->
 
-    <img src="./assets/images/she3.jpeg" id="image">
+
 </body>
 </html>
